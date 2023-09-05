@@ -39,6 +39,15 @@ class DiceeApp extends StatefulWidget {
 class _DiceeAppState extends State<DiceeApp> {
   int randomValue = 1;
   int randomValue2 = 1;
+  void rollingDicee() {
+    setState(
+      () {
+        randomValue = Random().nextInt(6) + 1;
+        randomValue2 = Random().nextInt(6) + 1;
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -72,12 +81,7 @@ class _DiceeAppState extends State<DiceeApp> {
                 padding: const EdgeInsets.fromLTRB(170.0, 20.0, 170.0, 0.0),
                 child: GestureDetector(
                   onTap: () {
-                    setState(
-                      () {
-                        randomValue = Random().nextInt(6) + 1;
-                        randomValue2 = Random().nextInt(6) + 1;
-                      },
-                    );
+                    rollingDicee();
                   },
                   child: Image(
                     image: AssetImage("images/button.jpg"),
